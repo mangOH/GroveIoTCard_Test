@@ -2,6 +2,7 @@
 source ../configuration.cfg
 
 rm -rf ./bin/*.update
+mkdir -p ./bin
 
 cd src
 make $TARGET_TYPE
