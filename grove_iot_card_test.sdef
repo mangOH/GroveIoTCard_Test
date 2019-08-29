@@ -1,0 +1,9 @@
+#include "$MANGOH_ROOT/yellow.sdef"
+
+apps:
+{
+    $CURDIR/apps/src/fingerprint/FingerPrint
+    $CURDIR/apps/src/GroveGPIO/GroveGPIO
+    $CURDIR/apps/src/ledmatrix/LedMatrix
+    $CURDIR/apps/src/lightSensor/lightSensor
+}
