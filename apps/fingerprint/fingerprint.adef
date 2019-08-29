@@ -1,11 +1,11 @@
 sandboxed: true
-start: manual
-version: 0.0
+start: auto
+version: 0.1
 
 executables:
 {
-    LedMatrix = (
-        components/ledmatrix
+    fingerprint = (
+        fingerprint
     )
 }
 
@@ -13,14 +13,13 @@ processes:
 {
     //run:
     //{
-    //    ( LedMatrix )
+    //    ( fingerprint )
     //}
 
     envVars:
     {
         LE_LOG_LEVEL = DEBUG
     }
-    faultAction: stopApp
 }
 
 bindings:
@@ -32,9 +31,9 @@ requires:
     device:
     {
 #if ${LEGATO_TARGET} = wp85
-        [rw]    /dev/i2c-1    /dev/
+        [rw]    /dev/ttyHS0    /dev/
 #elif ${LEGATO_TARGET} = wp76xx
-        [rw]    /dev/i2c-5    /dev/
+        [rw]    /dev/ttyHS0    /dev/
 #endif
     }
 }

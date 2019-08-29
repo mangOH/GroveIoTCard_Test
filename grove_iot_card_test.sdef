@@ -2,8 +2,8 @@
 
 apps:
 {
-    $CURDIR/apps/fingerprint/FingerPrint
-    $CURDIR/apps/GroveGPIO/GroveGPIO
-    $CURDIR/apps/ledmatrix/LedMatrix
+    $CURDIR/apps/fingerprint/fingerprint
+    $CURDIR/apps/groveGPIO/groveGPIO
+    $CURDIR/apps/ledMatrix/ledMatrix
     $CURDIR/apps/lightSensor/lightSensor
 }

@@ -59,7 +59,7 @@ void i2cSendContinueBytes(uint8_t address, uint8_t *data, uint8_t len)
  * Return
  *	Return vendor ID of device.
  **/
-uint16_t ledmatrix_getDeviceVID(void)
+uint16_t ledMatrix_getDeviceVID(void)
 {
 	uint8_t data[4] = {0, };
 	i2cSendByte(led_matrix_i2c_bus, devAddr, LEDMATRIX_I2C_CMD_GET_DEV_ID);
@@ -75,7 +75,7 @@ uint16_t ledmatrix_getDeviceVID(void)
  * Return
  *	Return product ID of device.
  **/
-uint16_t ledmatrix_getDevicePID(void)
+uint16_t ledMatrix_getDevicePID(void)
 {
 	uint8_t data[4] = {0, };
 	i2cSendByte(led_matrix_i2c_bus, devAddr, LEDMATRIX_I2C_CMD_GET_DEV_ID);
@@ -91,7 +91,7 @@ uint16_t ledmatrix_getDevicePID(void)
  * Return
  *	Null.
  **/
-void ledmatrix_changeDeviceBaseAddress(uint8_t newAddress)
+void ledMatrix_changeDeviceBaseAddress(uint8_t newAddress)
 {
 	uint8_t data[2] = {0, };
 	if (!(newAddress >= 0x10 && newAddress <= 0x70)) {
@@ -113,7 +113,7 @@ void ledmatrix_changeDeviceBaseAddress(uint8_t newAddress)
  * Return
  *	Null.
  **/
-void ledmatrix_defaultDeviceAddress(void)
+void ledMatrix_defaultDeviceAddress(void)
 {
 	i2cSendByte(led_matrix_i2c_bus, devAddr, LEDMATRIX_I2C_CMD_RST_ADDR);
 	baseAddress = LEDMATRIX_GROVE_TWO_RGB_LED_MATRIX_DEF_I2C_ADDR;
@@ -129,7 +129,7 @@ void ledmatrix_defaultDeviceAddress(void)
  * Return
  *	Null.
  **/
-void ledmatrix_turnOnLEDFlash(void)
+void ledMatrix_turnOnLEDFlash(void)
 {
 	i2cSendByte(led_matrix_i2c_bus, devAddr, LEDMATRIX_I2C_CMD_LED_ON);
 }
@@ -142,7 +142,7 @@ void ledmatrix_turnOnLEDFlash(void)
  * Return
  *	Null.
  **/
-void ledmatrix_turnOffLEDFlash(void)
+void ledMatrix_turnOffLEDFlash(void)
 {
 	i2cSendByte(led_matrix_i2c_bus, devAddr, LEDMATRIX_I2C_CMD_LED_OFF);
 }
@@ -156,7 +156,7 @@ void ledmatrix_turnOffLEDFlash(void)
  * Return
  *	Null.
  **/
-void ledmatrix_enableAutoSleep(void)
+void ledMatrix_enableAutoSleep(void)
 {
 	i2cSendByte(led_matrix_i2c_bus, devAddr, LEDMATRIX_I2C_CMD_AUTO_SLEEP_ON);
 }
@@ -170,7 +170,7 @@ void ledmatrix_enableAutoSleep(void)
  * Return
  *	Null.
  **/
-void ledmatrix_wakeDevice(void)
+void ledMatrix_wakeDevice(void)
 {
 	usleep(200);
 }
@@ -183,7 +183,7 @@ void ledmatrix_wakeDevice(void)
  * Return
  *	Null.
  **/
-void ledmatrix_disableAutoSleep(void)
+void ledMatrix_disableAutoSleep(void)
 {
 	i2cSendByte(led_matrix_i2c_bus, devAddr, LEDMATRIX_I2C_CMD_AUTO_SLEEP_OFF);
 }
@@ -199,7 +199,7 @@ void ledmatrix_disableAutoSleep(void)
  * Return
  *	Null.
  **/
-void ledmatrix_setDisplayOrientation(ledmatrix_orientation_type_t orientation)
+void ledMatrix_setDisplayOrientation(ledMatrix_orientation_type_t orientation)
 {
 	uint8_t data[2] = {0, };
 	data[0] = LEDMATRIX_I2C_CMD_DISP_ROTATE;
@@ -219,7 +219,7 @@ void ledmatrix_setDisplayOrientation(ledmatrix_orientation_type_t orientation)
  * Return
  *	Null.
  **/
-void ledmatrix_setDisplayOffset(int32_t offset_x, int32_t offset_y)
+void ledMatrix_setDisplayOffset(int32_t offset_x, int32_t offset_y)
 {
 	// convert to positive
 	offset_x +=8;
@@ -254,7 +254,7 @@ void ledmatrix_setDisplayOffset(int32_t offset_x, int32_t offset_y)
  * Return
  *	Null.
  **/
-void ledmatrix_displayBar(uint8_t bar,
+void ledMatrix_displayBar(uint8_t bar,
 			  uint16_t duration_time,
 			  bool forever_flag,
 			  uint8_t color)
@@ -283,7 +283,7 @@ void ledmatrix_displayBar(uint8_t bar,
  * Return
  *    Null.
  **/
-void ledmatrix_displayColorBar(uint8_t bar,
+void ledMatrix_displayColorBar(uint8_t bar,
 			       uint16_t duration_time,
 			       bool forever_flag)
 {
@@ -309,7 +309,7 @@ void ledmatrix_displayColorBar(uint8_t bar,
  * Return
  *    Null.
  **/
-void ledmatrix_displayColorWave(uint8_t color,
+void ledMatrix_displayColorWave(uint8_t color,
 				uint16_t duration_time,
 				bool forever_flag)
 {
@@ -334,7 +334,7 @@ void ledmatrix_displayColorWave(uint8_t color,
  * Return
  *	Null.
  **/
-void ledmatrix_displayClockwise(bool is_cw,
+void ledMatrix_displayClockwise(bool is_cw,
 				bool is_big,
 				uint16_t duration_time,
 				bool forever_flag)
@@ -366,7 +366,7 @@ void ledmatrix_displayClockwise(bool is_cw,
  * Return
  *	Null.
  **/
-void ledmatrix_displayColorAnimation(uint8_t index,
+void ledMatrix_displayColorAnimation(uint8_t index,
 				     uint16_t duration_time,
 				     bool forever_flag)
 {
@@ -432,7 +432,7 @@ void ledmatrix_displayColorAnimation(uint8_t index,
  * Return
  *	Null.
  **/
-void ledmatrix_displayEmoji(uint8_t emoji,
+void ledMatrix_displayEmoji(uint8_t emoji,
 			    uint16_t duration_time,
 			    bool forever_flag)
 {
@@ -460,7 +460,7 @@ void ledmatrix_displayEmoji(uint8_t emoji,
  * Return
  *	Null.
  **/
-void ledmatrix_displayNumber(int16_t number,
+void ledMatrix_displayNumber(int16_t number,
 			     uint16_t duration_time,
 			     bool forever_flag,
 			     uint8_t color)
@@ -490,7 +490,7 @@ void ledmatrix_displayNumber(int16_t number,
  * Return
  *	Null.
  **/
-void ledmatrix_displayString(const char* LE_NONNULL str,
+void ledMatrix_displayString(const char* LE_NONNULL str,
 			     uint16_t duration_time,
 			     bool forever_flag,
 			     uint8_t color)
@@ -530,7 +530,7 @@ void ledmatrix_displayString(const char* LE_NONNULL str,
  * Return
  *	Null.
  **/
-void ledmatrix_displayFrames(const uint8_t* bufferPtr,
+void ledMatrix_displayFrames(const uint8_t* bufferPtr,
 			     size_t bufferSize,
 			     uint16_t duration_time,
 			     bool forever_flag,
@@ -568,7 +568,7 @@ void ledmatrix_displayFrames(const uint8_t* bufferPtr,
 		i2cSendContinueBytes(devAddr, data+48, 24);
 	}
 }
-void ledmatrix_displayFrames64(const uint64_t* bufferPtr,
+void ledMatrix_displayFrames64(const uint64_t* bufferPtr,
 			       size_t bufferSize,
 			       uint16_t duration_time,
 			       bool forever_flag,
@@ -623,7 +623,7 @@ void ledmatrix_displayFrames64(const uint64_t* bufferPtr,
  * Return
  *	Null.
  **/
-void ledmatrix_displayColorBlock(uint32_t rgb,
+void ledMatrix_displayColorBlock(uint32_t rgb,
 				 uint16_t duration_time,
 				 bool forever_flag)
 {
@@ -647,7 +647,7 @@ void ledmatrix_displayColorBlock(uint32_t rgb,
  * Return
  *	Null.
  **/
-void ledmatrix_stopDisplay(void)
+void ledMatrix_stopDisplay(void)
 {
 	i2cSendByte(led_matrix_i2c_bus, devAddr, LEDMATRIX_I2C_CMD_DISP_OFF);
 }
@@ -660,7 +660,7 @@ void ledmatrix_stopDisplay(void)
  * Return
  *	Null.
  **/
-void ledmatrix_storeFrames(void)
+void ledMatrix_storeFrames(void)
 {
 	i2cSendByte(led_matrix_i2c_bus, devAddr, LEDMATRIX_I2C_CMD_STORE_FLASH);
 	usleep(200000); // 200ms
@@ -674,7 +674,7 @@ void ledmatrix_storeFrames(void)
  * Return
  *	Null.
  **/
-void ledmatrix_deleteFrames(void)
+void ledMatrix_deleteFrames(void)
 {
 	i2cSendByte(led_matrix_i2c_bus, devAddr, LEDMATRIX_I2C_CMD_DELETE_FLASH);
 	usleep(200000); // 200ms
@@ -693,7 +693,7 @@ void ledmatrix_deleteFrames(void)
  * Return
  *	Null.
  **/
-void ledmatrix_displayFramesFromFlash(uint16_t duration_time,
+void ledMatrix_displayFramesFromFlash(uint16_t duration_time,
 				      bool forever_flag,
 				      uint8_t from,
 				      uint8_t to)
@@ -735,7 +735,7 @@ void ledmatrix_displayFramesFromFlash(uint16_t duration_time,
  * Return
  *	Null.
  **/
-void ledmatrix_enableTestMode(void)
+void ledMatrix_enableTestMode(void)
 {
 	i2cSendByte(led_matrix_i2c_bus, devAddr, LEDMATRIX_I2C_CMD_TEST_TX_RX_ON);
 }
@@ -748,7 +748,7 @@ void ledmatrix_enableTestMode(void)
  * Return
  *	Null.
  **/
-void ledmatrix_disableTestMode(void)
+void ledMatrix_disableTestMode(void)
 {
 	i2cSendByte(led_matrix_i2c_bus, devAddr, LEDMATRIX_I2C_CMD_TEST_TX_RX_OFF);
 }
@@ -761,7 +761,7 @@ void ledmatrix_disableTestMode(void)
  * Return
  *	Return software version.
  **/
-uint32_t ledmatrix_getTestVersion(void)
+uint32_t ledMatrix_getTestVersion(void)
 {
 	uint8_t data[3] = {0, };
 
@@ -778,7 +778,7 @@ uint32_t ledmatrix_getTestVersion(void)
  * Return
  *	Null.
  **/
-void ledmatrix_resetDevice(void)
+void ledMatrix_resetDevice(void)
 {
 
 }
@@ -792,7 +792,7 @@ void ledmatrix_resetDevice(void)
  *	Null.
 
  **/
-void ledmatrix_getDeviceId(uint8_t* deviceIdPtr, size_t* deviceIdSizePtr)
+void ledMatrix_getDeviceId(uint8_t* deviceIdPtr, size_t* deviceIdSizePtr)
 {
 	i2cSendByte(led_matrix_i2c_bus, devAddr, LEDMATRIX_I2C_CMD_GET_DEVICE_UID);
 	i2cReceiveBytes(led_matrix_i2c_bus, devAddr, (uint8_t *)deviceId, 12);
@@ -800,7 +800,7 @@ void ledmatrix_getDeviceId(uint8_t* deviceIdPtr, size_t* deviceIdSizePtr)
 	*deviceIdSizePtr = 12;
 }
 
-void ledmatrix_init(uint8_t base, uint8_t screenNumber)
+void ledMatrix_init(uint8_t base, uint8_t screenNumber)
 {
 	if (!(screenNumber >= 1 && screenNumber <= 16))
 		screenNumber = 1;
@@ -812,7 +812,7 @@ void ledmatrix_init(uint8_t base, uint8_t screenNumber)
 	devAddr = offsetAddress + baseAddress;
 }
 
-void ledmatrix_deinit(void)
+void ledMatrix_deinit(void)
 {
 }
 
@@ -875,7 +875,7 @@ static void process_data_arg(const char * arg)
 }
 
 
-static ledmatrix_COLORS_t get_color(const char * color_str)
+static ledMatrix_COLORS_t get_color(const char * color_str)
 {
 	if (memcmp(color_str, "red", strlen("red")) == 0) {
 		return LEDMATRIX_RED;
@@ -912,7 +912,7 @@ static ledmatrix_COLORS_t get_color(const char * color_str)
 COMPONENT_INIT
 {
 	LE_INFO("IOT0 Grove Card RGB LED matrix with bus '%s'", led_matrix_i2c_bus);
-	
+
 	le_arg_AddPositionalCallback(process_color_arg);
 	le_arg_AddPositionalCallback(process_type_arg);
 	le_arg_AddPositionalCallback(process_data_arg);
@@ -924,14 +924,14 @@ COMPONENT_INIT
 	LE_INFO("Done scanning.");
 
 	// LED matrix initialization
-	ledmatrix_init(0, 0);
+	ledMatrix_init(0, 0);
 
 	if (memcmp(type, "emoji", strlen("emoji")) == 0) {
-		ledmatrix_displayEmoji(atoi(data), 1000, true);
+		ledMatrix_displayEmoji(atoi(data), 1000, true);
 	} else if (memcmp(type, "number", strlen("number")) == 0) {
-		ledmatrix_displayNumber(atoi(data), 1000, true, get_color(color));
+		ledMatrix_displayNumber(atoi(data), 1000, true, get_color(color));
 	} else if (memcmp(type, "string", strlen("string")) == 0) {
-		ledmatrix_displayString(data, 1000 * strlen(data) ,true, get_color(color));
+		ledMatrix_displayString(data, 1000 * strlen(data) ,true, get_color(color));
 	} else {
 		fprintf(stderr, "Unknown type: '%s'\n", type);
 		exit(EXIT_FAILURE);

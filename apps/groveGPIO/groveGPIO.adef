@@ -1,0 +1,34 @@
+version: 1.0
+sandboxed: true
+start: manual
+
+executables:
+{
+    groveGPIO = ( groveGPIOComponent )
+}
+
+processes:
+{
+    envVars:
+    {
+        LE_LOG_LEVEL = DEBUG
+    }
+
+    //run:
+    //{
+    //    ( groveGPIO )
+    //}
+    faultAction: stopApp
+}
+
+requires:
+{
+}
+
+bindings:
+{
+    groveGPIO.groveGPIOComponent.D2 -> gpioService.le_gpioPin24
+    groveGPIO.groveGPIOComponent.D3 -> gpioService.le_gpioPin13
+    groveGPIO.groveGPIOComponent.D4 -> gpioService.le_gpioPin7
+    groveGPIO.groveGPIOComponent.D5 -> gpioService.le_gpioPin8
+}

@@ -7,20 +7,20 @@ provides:
 {
     api:
     {
-        $CURDIR/../../ledmatrix.api
+        $CURDIR/../../ledMatrix.api
     }
 }
 requires:
 {
     component:
     {
-        $CURDIR/../i2c-utils
+        $CURDIR/../i2cUtils
     }
 }
 
 cflags:
 {
-    -I$CURDIR/../i2c-utils
+    -I$CURDIR/../i2cUtils
     -D$LEGATO_TARGET
     -DINTERFACE_IOT0
 }
