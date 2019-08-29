@@ -25,15 +25,15 @@ source ./lib/common.sh
 
 target_setup() {
     prompt_char "
-Connect the following to the Grove IoT card:
-  A0: light sensor
-  D2: red led
-  D3: green led
-  D4: blue led
-  D5: white led
-  UART: fingerprint sensor
-  I2C: led matrix
-
+Connect the following to the Grove IoT card:\n
+  A0: light sensor\n
+  D2: red led\n
+  D3: green led\n
+  D4: blue led\n
+  D5: white led\n
+  UART: fingerprint sensor\n
+  I2C: led matrix\n
+\n
 Press ENTER to continue..."
 
 	WaitForDevice "Up" "$rbTimer"
@@ -58,7 +58,7 @@ Press ENTER to continue..."
 #
 #===============================================================================
 prompt_char() {
-	echo $1 >&2
+	echo -e $1 >&2
 	read prompt_input
 	echo $(echo $prompt_input | tr 'a-z' 'A-Z')
 }
