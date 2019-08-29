@@ -4,16 +4,16 @@ TARGETS := $(MAKECMDGOALS)
 all: $(TARGETS)
 
 $(TARGETS):
-	mkapp -v -t $@ \
+	mkapp -t $@ \
 		GroveGPIO/GroveGPIO.adef
 
-	mkapp -C -D$@ -C -DINTERFACE_IOT0 -v -t $@ \
+	mkapp -C -D$@ -C -DINTERFACE_IOT0 -t $@ \
 		ledmatrix/LedMatrix.adef
-		
-	mkapp -v -t $@ \
+
+	mkapp -t $@ \
 		fingerprint/FingerPrint.adef
 
-	mkapp -v -t $@ \
+	mkapp -t $@ \
 		lightSensor/lightSensor.adef
 
 
