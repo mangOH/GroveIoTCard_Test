@@ -458,10 +458,10 @@ WaitForDevice()
 {
     if [ $1 == "Up" ]; then
         local posReachMod=""
-        local negReachMod="NOT"
+        local negReachMod=" NOT"
         local resExpected="1"  # the expected return status of nc before target is up
     elif [ $1 == "Down" ]; then
-        local posReachMod="NOT"
+        local posReachMod=" NOT"
         local negReachMod=""
         local resExpected="0"
     else
@@ -478,7 +478,7 @@ WaitForDevice()
 
     local res=$resExpected
     local count=0
-    echo -n "Checking [$TARGET_IP] and proceed until it's $posReachMod reachable"
+    echo -n "Checking [$TARGET_IP] and proceed until it's$posReachMod reachable"
     while [ $res -eq $resExpected ] && [ $count -lt $timeout ]; do
         nc -z -w 2 $TARGET_IP $TARGET_SSH_PORT > /dev/null
         res=$?
@@ -491,10 +491,10 @@ WaitForDevice()
 
 
     if [ $count -eq $timeout ]; then
-        echo "Target is $negReachMod reachable for [$timeout] secs."
+        echo "Target is$negReachMod reachable for [$timeout] secs."
         return 1
     else
-        echo "Target is $posReachMod reachable before timeout."
+        echo "Target is$posReachMod reachable before timeout."
         return 0
     fi
 }
