@@ -24,68 +24,23 @@ source ./configuration.cfg
 source ./lib/common.sh
 
 target_setup() {
+    prompt_char "
+Connect the following to the Grove IoT card:
+  A0: light sensor
+  D2: red led
+  D3: green led
+  D4: blue led
+  D5: white led
+  UART: fingerprint sensor
+  I2C: led matrix
 
-	prompt_char "Connect Grove Card to unit. Press ENTER to continue..."
-	prompt_char "Connect RGB Led Matrix module into I2C port on Grove IOT Card. Press ENTER to continue..."
-	prompt_char "Connect FingerPrint sensor into UART port on Grove IOT Card. Press ENTER to continue..."
-	prompt_char "LEDs module into D2-D5 ports on Grove IOT Card. Press ENTER to continue..."
-	prompt_char "Connect unit to USB hub (main USB). Press ENTER to continue..."
+Press ENTER to continue..."
 
 	WaitForDevice "Up" "$rbTimer"
 
 	# create test folder
 	echo -e "${COLOR_TITLE}Creating testing folder${COLOR_RESET}"
 	SshToTarget "mkdir -p /tmp/iot_grove_card/apps"
-
-#	# # push legato test apps
-#	echo -e "${COLOR_TITLE}Pushing Legato apps${COLOR_RESET}"
-#	ScpToTarget "./apps/bin/GroveGPIO.$TARGET_TYPE.update" "/tmp/iot_grove_card/apps"
-#	ScpToTarget "./apps/bin/LedMatrix.$TARGET_TYPE.update" "/tmp/iot_grove_card/apps"
-#	ScpToTarget "./apps/bin/FingerPrint.$TARGET_TYPE.update" "/tmp/iot_grove_card/apps"
-#	ScpToTarget "./apps/bin/lightSensor.$TARGET_TYPE.update" "/tmp/iot_grove_card/apps"
-#
-#	# install apps
-#	if AppExist "GroveGPIO"
-#	then
-#		if ! AppRemove "GroveGPIO"
-#		then
-#			TEST_RESULT="f"
-#			echo -e "${COLOR_ERROR}Failed to remove app GroveGPIO${COLOR_RESET}"
-#		fi
-#	fi
-#	if AppExist "LedMatrix"
-#	then
-#		if ! AppRemove "LedMatrix"
-#		then
-#			TEST_RESULT="f"
-#			echo -e "${COLOR_ERROR}Failed to remove app LedMatrix${COLOR_RESET}"
-#		fi
-#	fi
-#	if AppExist "FingerPrint"
-#	then
-#		if ! AppRemove "FingerPrint"
-#		then
-#			TEST_RESULT="f"
-#			echo -e "${COLOR_ERROR}Failed to remove app FingerPrint${COLOR_RESET}"
-#		fi
-#	fi
-#	if AppExist "lightSensor"
-#	then
-#		if ! AppRemove "lightSensor"
-#		then
-#			TEST_RESULT="f"
-#			echo -e "${COLOR_ERROR}Failed to remove app lightSensor${COLOR_RESET}"
-#		fi
-#	fi
-#
-#	echo -e "${COLOR_TITLE}Installing app 'GroveGPIO'...${COLOR_RESET}"
-#	SshToTarget "/legato/systems/current/bin/update /tmp/iot_grove_card/apps/GroveGPIO.$TARGET_TYPE.update"
-#	echo -e "${COLOR_TITLE}Installling app 'LedMatrix'...${COLOR_RESET}"
-#	SshToTarget "/legato/systems/current/bin/update /tmp/iot_grove_card/apps/LedMatrix.$TARGET_TYPE.update"
-#	echo -e "${COLOR_TITLE}Installling app 'FingerPrint'...${COLOR_RESET}"
-#	SshToTarget "/legato/systems/current/bin/update /tmp/iot_grove_card/apps/FingerPrint.$TARGET_TYPE.update"
-#	echo -e "${COLOR_TITLE}Installling app 'lightSensor'...${COLOR_RESET}"
-#	SshToTarget "/legato/systems/current/bin/update /tmp/iot_grove_card/apps/lightSensor.$TARGET_TYPE.update"
 
 	# default state
 	target_default_state
@@ -139,7 +94,7 @@ numCompare() {
 	return $res
 }
 
-magic_P() {	
+magic_P() {
 	while true
 	do
 		lightSensor=$(SshToTarget "/legato/systems/current/bin/app runProc lightSensor --exe=lightSensor --")
@@ -327,76 +282,6 @@ target_start_test() {
 	return 0
 }
 
-target_cleanup() {
-	echo -e "${COLOR_TITLE}Restoring target${COLOR_RESET}"
-	#remove legato test app
-	if AppExist "GroveGPIO"
-	then
-		echo -e "${COLOR_TITLE}Uninstalling app 'GroveGPIO'...${COLOR_RESET}"
-		if ! AppRemove "GroveGPIO"
-		then
-			TEST_RESULT="f"
-			echo -e "${COLOR_ERROR}Failed to remove app 'GroveGPIO'${COLOR_RESET}"
-		fi
-	else
-		TEST_RESULT="f"
-		echo -e "${COLOR_ERROR}App 'GroveGPIO' has not been installed${COLOR_RESET}"
-	fi
-
-	if AppExist "LedMatrix"
-	then
-		echo -e "${COLOR_TITLE}Uninstalling app 'LedMatrix'...${COLOR_RESET}"
-		if ! AppRemove "LedMatrix"
-		then
-			TEST_RESULT="f"
-			echo -e "${COLOR_ERROR}Failed to remove app 'LedMatrix'${COLOR_RESET}"
-		fi
-	else
-		TEST_RESULT="f"
-		echo -e "${COLOR_ERROR}App 'LedMatrix' has not been installed${COLOR_RESET}"
-	fi
-
-	if AppExist "FingerPrint"
-	then
-		echo -e "${COLOR_TITLE}Uninstalling app 'FingerPrint'...${COLOR_RESET}"
-		if ! AppRemove "FingerPrint"
-		then
-			TEST_RESULT="f"
-			echo -e "${COLOR_ERROR}Failed to remove app 'FingerPrint'${COLOR_RESET}"
-		fi
-	else
-		TEST_RESULT="f"
-		echo -e "${COLOR_ERROR}App 'FingerPrint' has not been installed${COLOR_RESET}"
-	fi
-
-	if AppExist "lightSensor"
-	then
-		echo -e "${COLOR_TITLE}Uninstalling app 'lightSensor'...${COLOR_RESET}"
-		if ! AppRemove "lightSensor"
-		then
-			TEST_RESULT="f"
-			echo -e "${COLOR_ERROR}Failed to remove app 'lightSensor'${COLOR_RESET}"
-		fi
-	else
-		TEST_RESULT="f"
-		echo -e "${COLOR_ERROR}App 'lightSensor' has not been installed${COLOR_RESET}"
-	fi
-
-	# remove tmp folder?
-	# echo -e "${COLOR_TITLE}Removing testing folder${COLOR_RESET}"
-	# SshToTarget "/bin/rm -rf /tmp/iot_grove_card"
-
-	# restore golden legato?
-	# echo -e "${COLOR_TITLE}Restoring Legato${COLOR_RESET}"
-	# if ! RestoreGoldenLegato
-	# then
-	# 	TEST_RESULT="f"
-	# 	echo -e "${COLOR_ERROR}Failed to restore Legato to Golden state${COLOR_RESET}"
-	# 	return 1
-	# fi
-
-	return 0
-}
 
 # main
 if ! target_setup
@@ -410,12 +295,6 @@ then
 	TEST_RESULT="f"
 	echo -e "${COLOR_ERROR}Test is failed${COLOR_RESET}"
 fi
-
-#if ! target_cleanup
-#then
-#	TEST_RESULT="f"
-#	echo -e "${COLOR_ERROR}Failed to cleanup target${COLOR_RESET}"
-#fi
 
 echo -e "${COLOR_TITLE}Test is finished${COLOR_RESET}"
 EchoPassOrFail $TEST_RESULT
