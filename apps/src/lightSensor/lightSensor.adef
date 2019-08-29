@@ -4,21 +4,21 @@ start: manual
 
 executables:
 {
-	lightSensor = ( Component )
+    lightSensor = ( Component )
 }
 
 processes:
 {
-	envVars:
-	{
-		LE_LOG_LEVEL = DEBUG
-	}
+    envVars:
+    {
+        LE_LOG_LEVEL = DEBUG
+    }
 
-	//run:
-	//{
-	//	( lightSensor )
-	//}
-	faultAction: stopApp
+    //run:
+    //{
+    //    ( lightSensor )
+    //}
+    faultAction: stopApp
 }
 
 requires:
@@ -27,5 +27,5 @@ requires:
 
 bindings:
 {
-	lightSensor.Component.le_adc -> modemService.le_adc
+    lightSensor.Component.le_adc -> modemService.le_adc
 }

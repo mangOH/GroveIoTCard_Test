@@ -4,22 +4,22 @@ version: 0.1
 
 executables:
 {
-	FingerPrint = (
-		fingerprint
-	)
+    FingerPrint = (
+        fingerprint
+    )
 }
 
 processes:
 {
-	//run:
-	//{
-	//	( FingerPrint )
-	//}
+    //run:
+    //{
+    //    ( FingerPrint )
+    //}
 
-	envVars:
-	{
-		LE_LOG_LEVEL = DEBUG
-	}
+    envVars:
+    {
+        LE_LOG_LEVEL = DEBUG
+    }
 }
 
 bindings:
@@ -28,12 +28,12 @@ bindings:
 
 requires:
 {
-	device:
-	{
+    device:
+    {
 #if ${LEGATO_TARGET} = wp85
-		[rw]	/dev/ttyHS0	/dev/
+        [rw]    /dev/ttyHS0    /dev/
 #elif ${LEGATO_TARGET} = wp76xx
-		[rw]	/dev/ttyHS0	/dev/
+        [rw]    /dev/ttyHS0    /dev/
 #endif
-	}
+    }
 }

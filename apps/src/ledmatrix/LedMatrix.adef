@@ -4,23 +4,23 @@ version: 0.0
 
 executables:
 {
-	LedMatrix = (
-		components/ledmatrix
-	)
+    LedMatrix = (
+        components/ledmatrix
+    )
 }
 
 processes:
 {
-	//run:
-	//{
-	//	( LedMatrix )
-	//}
+    //run:
+    //{
+    //    ( LedMatrix )
+    //}
 
-	envVars:
-	{
-		LE_LOG_LEVEL = DEBUG
-	}
-	faultAction: stopApp
+    envVars:
+    {
+        LE_LOG_LEVEL = DEBUG
+    }
+    faultAction: stopApp
 }
 
 bindings:
@@ -29,12 +29,12 @@ bindings:
 
 requires:
 {
-	device:
-	{
+    device:
+    {
 #if ${LEGATO_TARGET} = wp85
-		[rw]	/dev/i2c-1	/dev/
+        [rw]    /dev/i2c-1    /dev/
 #elif ${LEGATO_TARGET} = wp76xx
-		[rw]	/dev/i2c-5	/dev/
+        [rw]    /dev/i2c-5    /dev/
 #endif
-	}
+    }
 }

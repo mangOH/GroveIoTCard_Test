@@ -1,14 +1,14 @@
 sources:
 {
-	ada_fingerprint.c
+    ada_fingerprint.c
 }
 
 provides:
 {
-	api:
-	{
-		$CURDIR/../fingerprint.api
-	}
+    api:
+    {
+        $CURDIR/../fingerprint.api
+    }
 }
 requires:
 {
@@ -16,5 +16,5 @@ requires:
 
 cflags:
 {
-	-DDEBUG
+    -DDEBUG
 }

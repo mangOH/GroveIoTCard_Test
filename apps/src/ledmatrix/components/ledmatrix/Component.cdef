@@ -1,26 +1,26 @@
 sources:
 {
-	ledmatrix.c
+    ledmatrix.c
 }
 
 provides:
 {
-	api:
-	{
-		$CURDIR/../../ledmatrix.api
-	}
+    api:
+    {
+        $CURDIR/../../ledmatrix.api
+    }
 }
 requires:
 {
-	component:
-	{
-		$CURDIR/../i2c-utils
-	}
+    component:
+    {
+        $CURDIR/../i2c-utils
+    }
 }
 
 cflags:
 {
-	-I$CURDIR/../i2c-utils
-	-D$LEGATO_TARGET
-	-DINTERFACE_IOT0
+    -I$CURDIR/../i2c-utils
+    -D$LEGATO_TARGET
+    -DINTERFACE_IOT0
 }
