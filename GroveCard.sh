@@ -37,55 +37,55 @@ target_setup() {
 	echo -e "${COLOR_TITLE}Creating testing folder${COLOR_RESET}"
 	SshToTarget "mkdir -p /tmp/iot_grove_card/apps"
 
-	# # push legato test apps
-	echo -e "${COLOR_TITLE}Pushing Legato apps${COLOR_RESET}"
-	ScpToTarget "./apps/bin/GroveGPIO.$TARGET_TYPE.update" "/tmp/iot_grove_card/apps"
-	ScpToTarget "./apps/bin/LedMatrix.$TARGET_TYPE.update" "/tmp/iot_grove_card/apps"
-	ScpToTarget "./apps/bin/FingerPrint.$TARGET_TYPE.update" "/tmp/iot_grove_card/apps"
-	ScpToTarget "./apps/bin/lightSensor.$TARGET_TYPE.update" "/tmp/iot_grove_card/apps"
-
-	# install apps
-	if AppExist "GroveGPIO"
-	then
-		if ! AppRemove "GroveGPIO"
-		then
-			TEST_RESULT="f"
-			echo -e "${COLOR_ERROR}Failed to remove app GroveGPIO${COLOR_RESET}"
-		fi
-	fi
-	if AppExist "LedMatrix"
-	then
-		if ! AppRemove "LedMatrix"
-		then
-			TEST_RESULT="f"
-			echo -e "${COLOR_ERROR}Failed to remove app LedMatrix${COLOR_RESET}"
-		fi
-	fi
-	if AppExist "FingerPrint"
-	then
-		if ! AppRemove "FingerPrint"
-		then
-			TEST_RESULT="f"
-			echo -e "${COLOR_ERROR}Failed to remove app FingerPrint${COLOR_RESET}"
-		fi
-	fi
-	if AppExist "lightSensor"
-	then
-		if ! AppRemove "lightSensor"
-		then
-			TEST_RESULT="f"
-			echo -e "${COLOR_ERROR}Failed to remove app lightSensor${COLOR_RESET}"
-		fi
-	fi
-
-	echo -e "${COLOR_TITLE}Installing app 'GroveGPIO'...${COLOR_RESET}"
-	SshToTarget "/legato/systems/current/bin/update /tmp/iot_grove_card/apps/GroveGPIO.$TARGET_TYPE.update"
-	echo -e "${COLOR_TITLE}Installling app 'LedMatrix'...${COLOR_RESET}"
-	SshToTarget "/legato/systems/current/bin/update /tmp/iot_grove_card/apps/LedMatrix.$TARGET_TYPE.update"
-	echo -e "${COLOR_TITLE}Installling app 'FingerPrint'...${COLOR_RESET}"
-	SshToTarget "/legato/systems/current/bin/update /tmp/iot_grove_card/apps/FingerPrint.$TARGET_TYPE.update"
-	echo -e "${COLOR_TITLE}Installling app 'lightSensor'...${COLOR_RESET}"
-	SshToTarget "/legato/systems/current/bin/update /tmp/iot_grove_card/apps/lightSensor.$TARGET_TYPE.update"
+#	# # push legato test apps
+#	echo -e "${COLOR_TITLE}Pushing Legato apps${COLOR_RESET}"
+#	ScpToTarget "./apps/bin/GroveGPIO.$TARGET_TYPE.update" "/tmp/iot_grove_card/apps"
+#	ScpToTarget "./apps/bin/LedMatrix.$TARGET_TYPE.update" "/tmp/iot_grove_card/apps"
+#	ScpToTarget "./apps/bin/FingerPrint.$TARGET_TYPE.update" "/tmp/iot_grove_card/apps"
+#	ScpToTarget "./apps/bin/lightSensor.$TARGET_TYPE.update" "/tmp/iot_grove_card/apps"
+#
+#	# install apps
+#	if AppExist "GroveGPIO"
+#	then
+#		if ! AppRemove "GroveGPIO"
+#		then
+#			TEST_RESULT="f"
+#			echo -e "${COLOR_ERROR}Failed to remove app GroveGPIO${COLOR_RESET}"
+#		fi
+#	fi
+#	if AppExist "LedMatrix"
+#	then
+#		if ! AppRemove "LedMatrix"
+#		then
+#			TEST_RESULT="f"
+#			echo -e "${COLOR_ERROR}Failed to remove app LedMatrix${COLOR_RESET}"
+#		fi
+#	fi
+#	if AppExist "FingerPrint"
+#	then
+#		if ! AppRemove "FingerPrint"
+#		then
+#			TEST_RESULT="f"
+#			echo -e "${COLOR_ERROR}Failed to remove app FingerPrint${COLOR_RESET}"
+#		fi
+#	fi
+#	if AppExist "lightSensor"
+#	then
+#		if ! AppRemove "lightSensor"
+#		then
+#			TEST_RESULT="f"
+#			echo -e "${COLOR_ERROR}Failed to remove app lightSensor${COLOR_RESET}"
+#		fi
+#	fi
+#
+#	echo -e "${COLOR_TITLE}Installing app 'GroveGPIO'...${COLOR_RESET}"
+#	SshToTarget "/legato/systems/current/bin/update /tmp/iot_grove_card/apps/GroveGPIO.$TARGET_TYPE.update"
+#	echo -e "${COLOR_TITLE}Installling app 'LedMatrix'...${COLOR_RESET}"
+#	SshToTarget "/legato/systems/current/bin/update /tmp/iot_grove_card/apps/LedMatrix.$TARGET_TYPE.update"
+#	echo -e "${COLOR_TITLE}Installling app 'FingerPrint'...${COLOR_RESET}"
+#	SshToTarget "/legato/systems/current/bin/update /tmp/iot_grove_card/apps/FingerPrint.$TARGET_TYPE.update"
+#	echo -e "${COLOR_TITLE}Installling app 'lightSensor'...${COLOR_RESET}"
+#	SshToTarget "/legato/systems/current/bin/update /tmp/iot_grove_card/apps/lightSensor.$TARGET_TYPE.update"
 
 	# default state
 	target_default_state
@@ -411,11 +411,11 @@ then
 	echo -e "${COLOR_ERROR}Test is failed${COLOR_RESET}"
 fi
 
-if ! target_cleanup
-then
-	TEST_RESULT="f"
-	echo -e "${COLOR_ERROR}Failed to cleanup target${COLOR_RESET}"
-fi
+#if ! target_cleanup
+#then
+#	TEST_RESULT="f"
+#	echo -e "${COLOR_ERROR}Failed to cleanup target${COLOR_RESET}"
+#fi
 
 echo -e "${COLOR_TITLE}Test is finished${COLOR_RESET}"
 EchoPassOrFail $TEST_RESULT
