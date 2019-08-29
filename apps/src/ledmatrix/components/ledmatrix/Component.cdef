@@ -21,4 +21,5 @@ requires:
 cflags:
 {
 	-I$CURDIR/../i2c-utils
+	-D$LEGATO_TARGET
 }
